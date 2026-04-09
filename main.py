@@ -7,6 +7,9 @@ class BankAccount:
         self.__transaction_count = 0
 
     def deposit(self, amount: float) -> float:
+        if amount < 0:
+            print("Enter a valid deposit amount")
+            return None
         self.__balance += float(amount)
         self.__transaction_count += 1
         return self.__balance
@@ -17,7 +20,8 @@ class BankAccount:
             self.__transaction_count += 1
             return self.__balance
         else:
-            return "Balance is too low for this transaction"
+            print("Balance is too low for this transaction")
+            return None
         
     def get_balance(self):
         return f"Your account {self.account_number} is of type : {self.account_type} and present balance is : Rs.{float(self.__balance)}"
@@ -50,5 +54,5 @@ print("=================== [ENCAPSULATION on balance] ==========================
 print(acc_1.balance)
 print(acc_1.balance)
 
-acc_1.balance = 6787        # AttributeError: property 'balance' of 'BankAccount' object has no setter
+# acc_1.balance = 6787        # AttributeError: property 'balance' of 'BankAccount' object has no setter
 print(acc_1.balance)
